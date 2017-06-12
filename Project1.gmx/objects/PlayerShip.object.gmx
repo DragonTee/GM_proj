@@ -35,7 +35,7 @@ followers = 0;
 zoom = view_wview[0];
 zoom_max = 3;
 zoom_min = 0.5;
-
+global.battle_distance = 25;
 </string>
           </argument>
         </arguments>
@@ -125,6 +125,15 @@ if (mouse_wheel_down() &amp;&amp; (view_wview[0] * 2) / zoom &lt;= zoom_max)
     view_hview[0] *= 2;
     background_xscale[0] *= 2 * 0.99;
     background_yscale[0] *= 2 * 0.99;}
+//entering the battle
+if (point_distance(x, y, instance_nearest(x, y, EnemyFleet).x, instance_nearest(x, y, EnemyFleet).y) &lt;= global.battle_distance)
+{
+    enemy = instance_nearest(x, y, EnemyFleet);
+    global.battle_angle = point_direction(x, y, enemy.x, enemy.y);
+    global.battle_fleet1_angle = image_angle(self);
+    global.battle_fleet2_angle = image_angle(enemy);
+    global.battle_space_type = "space";
+}
 </string>
           </argument>
         </arguments>
