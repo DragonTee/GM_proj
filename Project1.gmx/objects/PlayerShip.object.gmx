@@ -130,8 +130,8 @@ if (point_distance(x, y, instance_nearest(x, y, EnemyFleet).x, instance_nearest(
 {
     enemy = instance_nearest(x, y, EnemyFleet);
     global.battle_angle = point_direction(x, y, enemy.x, enemy.y);
-    global.battle_fleet1_angle = image_angle(self);
-    global.battle_fleet2_angle = image_angle(enemy);
+    global.battle_fleet1_angle = image_angle;
+    global.battle_fleet2_angle = enemy.image_angle;
     global.battle_space_type = "space";
 }
 </string>
@@ -166,12 +166,12 @@ if (point_distance(x, y, instance_nearest(x, y, EnemyFleet).x, instance_nearest(
   <PhysicsObject>0</PhysicsObject>
   <PhysicsObjectSensor>0</PhysicsObjectSensor>
   <PhysicsObjectShape>0</PhysicsObjectShape>
-  <PhysicsObjectDensity>0,5</PhysicsObjectDensity>
-  <PhysicsObjectRestitution>0,100000001490116</PhysicsObjectRestitution>
+  <PhysicsObjectDensity>0.5</PhysicsObjectDensity>
+  <PhysicsObjectRestitution>0.100000001490116</PhysicsObjectRestitution>
   <PhysicsObjectGroup>0</PhysicsObjectGroup>
-  <PhysicsObjectLinearDamping>0,100000001490116</PhysicsObjectLinearDamping>
-  <PhysicsObjectAngularDamping>0,100000001490116</PhysicsObjectAngularDamping>
-  <PhysicsObjectFriction>0,200000002980232</PhysicsObjectFriction>
+  <PhysicsObjectLinearDamping>0.100000001490116</PhysicsObjectLinearDamping>
+  <PhysicsObjectAngularDamping>0.100000001490116</PhysicsObjectAngularDamping>
+  <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
   <PhysicsShapePoints/>
