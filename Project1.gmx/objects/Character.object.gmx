@@ -31,6 +31,7 @@ vsp = 0;
 jumpspeed = 7;
 movespeed = 4;
 is_crouching = false;
+offset = 40
 </string>
           </argument>
         </arguments>
@@ -114,7 +115,7 @@ else
 //shooting
 if (mouse_check_button(mb_left))
 {
-    with instance_create(x, y, bullet)
+    with instance_create(x + cos(degtorad(point_direction(x, y, mouse_x, mouse_y))) * offset, y - sin(degtorad(point_direction(x, y, mouse_x, mouse_y))) * offset, bullet)
     {
         d = point_direction(x, y, mouse_x, mouse_y);
         sp = 10;
