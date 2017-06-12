@@ -31,7 +31,7 @@ vsp = 0;
 jumpspeed = 7;
 movespeed = 4;
 is_crouching = false;
-offset = 40
+offset = 32
 </string>
           </argument>
         </arguments>
@@ -70,6 +70,8 @@ if (place_meeting(x,y+1,all))
 //horizontal movement
 if place_meeting(x+hsp,y,all)
 {
+    if !place_meeting(x+hsp,y,bullet)
+    {
     yplus = 0;
     while (place_meeting(x+hsp,y-yplus,all) &amp;&amp; yplus &lt;= abs(2*hsp)) yplus += 1;
     if place_meeting(x+hsp,y-yplus,all)
@@ -81,16 +83,20 @@ if place_meeting(x+hsp,y,all)
     {
         y -= yplus
     }
+    }
 }
 x += hsp;
 //vertical movement
 if (place_meeting(x,y+vsp,all))
 {
+    if !place_meeting(x,y+vsp,bullet)
+    {
     while(!place_meeting(x,y+sign(vsp),all))
     {
         y += sign(vsp);
     }
     vsp = 0;
+    }
 }
 y += vsp;
 //crouching
@@ -115,9 +121,9 @@ else
 //shooting
 if (mouse_check_button(mb_left))
 {
-    with instance_create(x + cos(degtorad(point_direction(x, y, mouse_x, mouse_y))) * offset, y - sin(degtorad(point_direction(x, y, mouse_x, mouse_y))) * offset, bullet)
+    with instance_create(other.x + cos(degtorad(point_direction(x, y, mouse_x, mouse_y))) * offset, other.y - sin(degtorad(point_direction(x, y, mouse_x, mouse_y))) * offset, bullet)
     {
-        d = point_direction(x, y, mouse_x, mouse_y);
+        d = point_direction(other.x, other.y, mouse_x, mouse_y);
         sp = 10;
         motion_add(d, sp);
     }
@@ -128,16 +134,42 @@ if (mouse_check_button(mb_left))
         </arguments>
       </action>
     </event>
+    <event eventtype="8" enumb="73">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>dir = point_direction(x, y, mouse_x, mouse_y)
+sp = draw_sprite_ext(sprite9, 0, x + cos(degtorad(dir)) * offset, y - sin(degtorad(dir)) * offset, 2, 1, point_direction(x, y, mouse_x, mouse_y), c_white, 255);
+
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
   </events>
   <PhysicsObject>0</PhysicsObject>
   <PhysicsObjectSensor>0</PhysicsObjectSensor>
   <PhysicsObjectShape>0</PhysicsObjectShape>
-  <PhysicsObjectDensity>0,5</PhysicsObjectDensity>
-  <PhysicsObjectRestitution>0,100000001490116</PhysicsObjectRestitution>
+  <PhysicsObjectDensity>0.5</PhysicsObjectDensity>
+  <PhysicsObjectRestitution>0.100000001490116</PhysicsObjectRestitution>
   <PhysicsObjectGroup>0</PhysicsObjectGroup>
-  <PhysicsObjectLinearDamping>0,100000001490116</PhysicsObjectLinearDamping>
-  <PhysicsObjectAngularDamping>0,100000001490116</PhysicsObjectAngularDamping>
-  <PhysicsObjectFriction>0,200000002980232</PhysicsObjectFriction>
+  <PhysicsObjectLinearDamping>0.100000001490116</PhysicsObjectLinearDamping>
+  <PhysicsObjectAngularDamping>0.100000001490116</PhysicsObjectAngularDamping>
+  <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
   <PhysicsShapePoints/>
