@@ -13,6 +13,7 @@
     <sprite>sprites\sprite4</sprite>
     <sprite>sprites\Ship_sp</sprite>
     <sprite>sprites\ShipfFriend_sp</sprite>
+    <sprite>sprites\ShipEnemy_sp</sprite>
     <sprite>sprites\Planet_g_sp</sprite>
     <sprite>sprites\Ship_landed</sprite>
     <sprite>sprites\sprite9</sprite>
@@ -37,6 +38,7 @@
     <object>objects\Parallax</object>
     <object>objects\Planet_g</object>
     <object>objects\Ship_landed_obj</object>
+    <object>objects\EnemyFleet</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\Space_system_room</room>

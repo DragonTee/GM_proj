@@ -54,6 +54,7 @@
     <instance objName="PlayerShip" x="224" y="288" name="inst_A8DB0DD7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="Planet_g" x="704" y="448" name="inst_6502C2C8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="Parallax" x="0" y="0" name="inst_F81A7ECE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="EnemyFleet" x="480" y="832" name="inst_B84A5154" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
