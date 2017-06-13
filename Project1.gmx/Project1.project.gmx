@@ -26,6 +26,7 @@
   <scripts name="scripts">
     <script>scripts\Block_Division.gml</script>
     <script>scripts\shoot.gml</script>
+    <script>scripts\enter_the_battle.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\Block_obj</object>
@@ -39,6 +40,8 @@
     <object>objects\Planet_g</object>
     <object>objects\Ship_landed_obj</object>
     <object>objects\EnemyFleet</object>
+    <object>objects\EnemyShip</object>
+    <object>objects\Battle_initialize</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\Space_system_room</room>
