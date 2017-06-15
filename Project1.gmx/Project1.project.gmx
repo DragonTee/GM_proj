@@ -42,12 +42,14 @@
     <object>objects\EnemyFleet</object>
     <object>objects\EnemyShip</object>
     <object>objects\Battle_initialize</object>
+    <object>objects\Fleet_setup_controller</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\Space_system_room</room>
     <room>rooms\Galaxy_map_room</room>
     <room>rooms\Space_battle_room</room>
     <room>rooms\Planet_room</room>
+    <room>rooms\Fleet_setup_room</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

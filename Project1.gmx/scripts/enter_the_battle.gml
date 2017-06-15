@@ -8,4 +8,3 @@ with instance_create(room_width / 2 + cos(degtorad(global.battle_angle)) * globa
     image_angle = global.battle_fleet2_angle;
 }
 }
-
