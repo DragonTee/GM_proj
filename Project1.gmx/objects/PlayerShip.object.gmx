@@ -62,7 +62,7 @@ global.battle_offset = 100;
           <argument>
             <kind>1</kind>
             <string>EPS = 0.001;
-if (room = Space_system_room) //if not in menu
+if (room = Space_system_room || room = Space_battle_room) //if not in menu
 {
 //rotation
 if (keyboard_check(ord("A")))
@@ -135,6 +135,7 @@ if (instance_exists(instance_nearest(x, y, EnemyFleet)))
 {
     if (point_distance(x, y, instance_nearest(x, y, EnemyFleet).x, instance_nearest(x, y, EnemyFleet).y) &lt;= global.battle_distance)
     {
+        global.system_room = room;
         global.enemy = instance_nearest(x, y, EnemyFleet);
         global.battle_angle = point_direction(x, y, global.enemy.x, global.enemy.y);
         global.battle_fleet1_angle = image_angle;
@@ -145,13 +146,13 @@ if (instance_exists(instance_nearest(x, y, EnemyFleet)))
         global.battle_space_type = "space";
         room_goto(Space_battle_room);
     }
-}}
-global.system_rm = room; //set current room
+}
 //enter fleet setup screen
 if (keyboard_check_pressed(ord("G")))
 {
+    global.system_room = room;
     room_goto(Fleet_setup_room);
-}
+}}
 </string>
           </argument>
         </arguments>
@@ -161,12 +162,12 @@ if (keyboard_check_pressed(ord("G")))
   <PhysicsObject>0</PhysicsObject>
   <PhysicsObjectSensor>0</PhysicsObjectSensor>
   <PhysicsObjectShape>0</PhysicsObjectShape>
-  <PhysicsObjectDensity>0,5</PhysicsObjectDensity>
-  <PhysicsObjectRestitution>0,100000001490116</PhysicsObjectRestitution>
+  <PhysicsObjectDensity>0.5</PhysicsObjectDensity>
+  <PhysicsObjectRestitution>0.100000001490116</PhysicsObjectRestitution>
   <PhysicsObjectGroup>0</PhysicsObjectGroup>
-  <PhysicsObjectLinearDamping>0,100000001490116</PhysicsObjectLinearDamping>
-  <PhysicsObjectAngularDamping>0,100000001490116</PhysicsObjectAngularDamping>
-  <PhysicsObjectFriction>0,200000002980232</PhysicsObjectFriction>
+  <PhysicsObjectLinearDamping>0.100000001490116</PhysicsObjectLinearDamping>
+  <PhysicsObjectAngularDamping>0.100000001490116</PhysicsObjectAngularDamping>
+  <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
   <PhysicsShapePoints/>
