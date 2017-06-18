@@ -1,6 +1,5 @@
-global.ship_index = file_text_read_real(global.fleet_save);
-global.ship_obj = file_text_read_string(global.fleet_save);
-global.ship_x = file_text_read_real(global.fleet_save);
-global.ship_y = file_text_read_real(global.fleet_save);
-file_text_readln(global.fleet_save);
-
+global.ship_index = global.index;
+ind = string(global.index);
+global.ship_obj = ini_read_string(ind, ship, 0);
+global.ship_x = ini_read_real(ind, x, 0);
+global.ship_y = ini_read_real(ind, y, 0);
