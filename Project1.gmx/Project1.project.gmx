@@ -17,6 +17,7 @@
     <sprite>sprites\Planet_g_sp</sprite>
     <sprite>sprites\Ship_landed</sprite>
     <sprite>sprites\sprite9</sprite>
+    <sprite>sprites\Star_y_sp</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background1</background>
@@ -49,6 +50,7 @@
       <object>objects\Ship_medium</object>
       <object>objects\Ship_big</object>
     </objects>
+    <object>objects\Star_y</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\Space_system_room</room>
