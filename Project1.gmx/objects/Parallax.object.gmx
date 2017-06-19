@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>parallax[0] = 0.99
+            <string>global.parallax[0] = 0.99
 </string>
           </argument>
         </arguments>
@@ -50,8 +50,8 @@
             <kind>1</kind>
             <string>for (i = 0; background_visible[i]; i++)
 {
-    background_x[i] = view_xview[i] * parallax[i];
-    background_y[i] = view_yview[i] * parallax[i];}
+    background_x[i] = view_xview[i] * global.parallax[i];
+    background_y[i] = view_yview[i] * global.parallax[i];}
 </string>
           </argument>
         </arguments>

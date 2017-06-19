@@ -26,6 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>//initializing
+EPS = 0.001;
 fric = 0.9;
 acc = 0.5;
 bacc = 0.1;
@@ -66,8 +67,7 @@ if(room == Space_system_room)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>EPS = 0.001;
-if (room = Space_system_room || room = Space_battle_room) //if not in menu
+            <string>if (room = Space_system_room || room = Space_battle_room) //if not in menu
 {
 //rotation
 if (keyboard_check(ord("A")))
@@ -158,17 +158,18 @@ if (instance_exists(instance_nearest(x, y, EnemyFleet)))
         global.battle_leaving = 0;
         x -= global.battle_leaving_offset * cos(degtorad(global.battle_leaving_angle));
         y += global.battle_leaving_offset * sin(degtorad(global.battle_leaving_angle));
-        image_angle = global.battle_leaving_angle + 180;
+        image_angle = global.battle_leaving_ship_angle;
     }
 }
 if ((x &lt;= 0 || x &gt;= room_width || y &lt;= 0 || y &gt;= room_height) &amp;&amp; room == Space_battle_room)
 {
     global.battle_leaving = 1;
+    global.battle_leaving_ship_angle = image_angle;
     global.battle_leaving_angle = point_direction(x, y, room_width / 2, room_height / 2);
     room_goto(global.system_room);
 }
 //enter fleet setup screen
-if (keyboard_check_pressed(ord("G")))
+if (keyboard_check_pressed(ord("G")) &amp;&amp; room != Space_battle_room)
 {
     global.system_room = room;
     room_goto(Fleet_setup_room);
