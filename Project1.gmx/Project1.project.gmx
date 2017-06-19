@@ -44,12 +44,12 @@
     <object>objects\EnemyShip</object>
     <object>objects\Battle_initialize</object>
     <object>objects\Fleet_setup_controller</object>
+    <object>objects\Star_y</object>
     <objects name="Ships">
       <object>objects\Ship_small</object>
       <object>objects\Ship_medium</object>
       <object>objects\Ship_big</object>
     </objects>
-    <object>objects\Star_y</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\Space_system_room</room>
