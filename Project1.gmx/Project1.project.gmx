@@ -28,7 +28,6 @@
     <script>scripts\Block_Division.gml</script>
     <script>scripts\shoot.gml</script>
     <script>scripts\enter_the_battle.gml</script>
-    <script>scripts\ship_read.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\Block_obj</object>
