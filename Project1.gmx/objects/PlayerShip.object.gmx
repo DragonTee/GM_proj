@@ -125,16 +125,22 @@ if (mouse_wheel_up() &amp;&amp; (view_wview[0] * 0.5) / zoom &gt;= zoom_min)
 {
     view_wview[0] *= 0.5;
     view_hview[0] *= 0.5;
-    background_xscale[0] *= 0.5 / 0.99;
-    background_yscale[0] *= 0.5 / 0.99;
+    for (i = 0; background_visible[i]; i++)
+    {
+        background_xscale[i] *= 0.5 / global.parallax[i];
+        background_yscale[i] *= 0.5 / global.parallax[i];
     }
-
+}
 if (mouse_wheel_down() &amp;&amp; (view_wview[0] * 2) / zoom &lt;= zoom_max)
 {
     view_wview[0] *= 2;
     view_hview[0] *= 2;
-    background_xscale[0] *= 2 * 0.99;
-    background_yscale[0] *= 2 * 0.99;}
+    for (i = 0; background_visible[i]; i++)
+    {
+        background_xscale[i] *= 2 * global.parallax[i];
+        background_yscale[i] *= 2 * global.parallax[i];
+    }
+}
 //entering the battle
 if (instance_exists(instance_nearest(x, y, EnemyFleet)))
 {
