@@ -26,6 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>//initializing
+EPS = 0.001;
 fric = 0.9;
 acc = 0.5;
 bacc = 0.1;
@@ -34,10 +35,16 @@ vsp = 0;
 rot_sp = 3;
 followers = 0;
 zoom = view_wview[0];
-zoom_max = 3;
+zoom_max = 8;
 zoom_min = 0.5;
 global.battle_distance = 25;
 global.battle_offset = 100;
+global.battle_leaving_offset = 100;
+global.battle_leaving = 0;
+if(room == Space_system_room)
+{
+    global.system_player_ship = self;
+}
 </string>
           </argument>
         </arguments>
@@ -60,7 +67,8 @@ global.battle_offset = 100;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>EPS = 0.001;
+            <string>if (room = Space_system_room || room = Space_battle_room) //if not in menu
+{
 //rotation
 if (keyboard_check(ord("A")))
 {
@@ -117,21 +125,28 @@ if (mouse_wheel_up() &amp;&amp; (view_wview[0] * 0.5) / zoom &gt;= zoom_min)
 {
     view_wview[0] *= 0.5;
     view_hview[0] *= 0.5;
-    background_xscale[0] *= 0.5 / 0.99;
-    background_yscale[0] *= 0.5 / 0.99;
+    for (i = 0; background_visible[i]; i++)
+    {
+        background_xscale[i] *= 0.5 / global.parallax[i];
+        background_yscale[i] *= 0.5 / global.parallax[i];
     }
-
+}
 if (mouse_wheel_down() &amp;&amp; (view_wview[0] * 2) / zoom &lt;= zoom_max)
 {
     view_wview[0] *= 2;
     view_hview[0] *= 2;
-    background_xscale[0] *= 2 * 0.99;
-    background_yscale[0] *= 2 * 0.99;}
+    for (i = 0; background_visible[i]; i++)
+    {
+        background_xscale[i] *= 2 * global.parallax[i];
+        background_yscale[i] *= 2 * global.parallax[i];
+    }
+}
 //entering the battle
 if (instance_exists(instance_nearest(x, y, EnemyFleet)))
 {
-    if (point_distance(x, y, instance_nearest(x, y, EnemyFleet).x, instance_nearest(x, y, EnemyFleet).y) &lt;= global.battle_distance)
+    if (point_distance(x, y, instance_nearest(x, y, EnemyFleet).x, instance_nearest(x, y, EnemyFleet).y) &lt;= global.battle_distance &amp;&amp; global.battle_leaving == 0)
     {
+        global.system_room = room;
         global.enemy = instance_nearest(x, y, EnemyFleet);
         global.battle_angle = point_direction(x, y, global.enemy.x, global.enemy.y);
         global.battle_fleet1_angle = image_angle;
@@ -140,8 +155,31 @@ if (instance_exists(instance_nearest(x, y, EnemyFleet)))
             global.battle_fleet2_angle = image_angle;
         }
         global.battle_space_type = "space";
+        global.battle_leaving = 0;
         room_goto(Space_battle_room);
     }
+    else
+    if (global.battle_leaving == 1)
+    {
+        global.battle_leaving = 0;
+        x -= global.battle_leaving_offset * cos(degtorad(global.battle_leaving_angle));
+        y += global.battle_leaving_offset * sin(degtorad(global.battle_leaving_angle));
+        image_angle = global.battle_leaving_ship_angle;
+    }
+}
+if ((x &lt;= 0 || x &gt;= room_width || y &lt;= 0 || y &gt;= room_height) &amp;&amp; room == Space_battle_room)
+{
+    global.battle_leaving = 1;
+    global.battle_leaving_ship_angle = image_angle;
+    global.battle_leaving_angle = point_direction(x, y, room_width / 2, room_height / 2);
+    room_goto(global.system_room);
+}
+//enter fleet setup screen
+if (keyboard_check_pressed(ord("G")) &amp;&amp; room != Space_battle_room)
+{
+    global.system_room = room;
+    room_goto(Fleet_setup_room);
+}
 }
 </string>
           </argument>
@@ -152,12 +190,12 @@ if (instance_exists(instance_nearest(x, y, EnemyFleet)))
   <PhysicsObject>0</PhysicsObject>
   <PhysicsObjectSensor>0</PhysicsObjectSensor>
   <PhysicsObjectShape>0</PhysicsObjectShape>
-  <PhysicsObjectDensity>0,5</PhysicsObjectDensity>
-  <PhysicsObjectRestitution>0,100000001490116</PhysicsObjectRestitution>
+  <PhysicsObjectDensity>0.5</PhysicsObjectDensity>
+  <PhysicsObjectRestitution>0.100000001490116</PhysicsObjectRestitution>
   <PhysicsObjectGroup>0</PhysicsObjectGroup>
-  <PhysicsObjectLinearDamping>0,100000001490116</PhysicsObjectLinearDamping>
-  <PhysicsObjectAngularDamping>0,100000001490116</PhysicsObjectAngularDamping>
-  <PhysicsObjectFriction>0,200000002980232</PhysicsObjectFriction>
+  <PhysicsObjectLinearDamping>0.100000001490116</PhysicsObjectLinearDamping>
+  <PhysicsObjectAngularDamping>0.100000001490116</PhysicsObjectAngularDamping>
+  <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
   <PhysicsShapePoints/>

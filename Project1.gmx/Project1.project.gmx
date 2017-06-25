@@ -17,6 +17,7 @@
     <sprite>sprites\Planet_g_sp</sprite>
     <sprite>sprites\Ship_landed</sprite>
     <sprite>sprites\sprite9</sprite>
+    <sprite>sprites\Star_y_sp</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background1</background>
@@ -42,12 +43,20 @@
     <object>objects\EnemyFleet</object>
     <object>objects\EnemyShip</object>
     <object>objects\Battle_initialize</object>
+    <object>objects\Fleet_setup_controller</object>
+    <object>objects\Star_y</object>
+    <objects name="Ships">
+      <object>objects\Ship_small</object>
+      <object>objects\Ship_medium</object>
+      <object>objects\Ship_big</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\Space_system_room</room>
     <room>rooms\Galaxy_map_room</room>
     <room>rooms\Space_battle_room</room>
     <room>rooms\Planet_room</room>
+    <room>rooms\Fleet_setup_room</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
