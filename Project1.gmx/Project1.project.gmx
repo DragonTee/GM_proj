@@ -19,6 +19,7 @@
     <sprite>sprites\sprite9</sprite>
     <sprite>sprites\Star_y_sp</sprite>
     <sprite>sprites\Button</sprite>
+    <sprite>sprites\galaxy_star_sp</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background1</background>
@@ -29,6 +30,7 @@
     <script>scripts\Block_Division.gml</script>
     <script>scripts\shoot.gml</script>
     <script>scripts\enter_the_battle.gml</script>
+    <script>scripts\GenerateGalaxy.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font</font>
@@ -48,6 +50,7 @@
     <object>objects\EnemyShip</object>
     <object>objects\Battle_initialize</object>
     <object>objects\Fleet_setup_controller</object>
+    <object>objects\Galaxy_initialize</object>
     <object>objects\Star_y</object>
     <objects name="Ships">
       <object>objects\Ship_small</object>
@@ -59,7 +62,9 @@
       <object>objects\bt_back</object>
       <object>objects\bt_settings</object>
       <object>objects\bt_singleplayer</object>
+      <object>objects\bt_newgame</object>
     </objects>
+    <object>objects\galaxy_star</object>
   </objects>
   <rooms name="rooms">
     <rooms name="Menus">
