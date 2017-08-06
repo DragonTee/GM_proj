@@ -18,6 +18,12 @@
     <sprite>sprites\Ship_landed</sprite>
     <sprite>sprites\sprite9</sprite>
     <sprite>sprites\Star_y_sp</sprite>
+    <sprite>sprites\Button</sprite>
+    <sprite>sprites\galaxy_star_yellow_sp</sprite>
+    <sprite>sprites\galaxy_star_red_sp</sprite>
+    <sprite>sprites\galaxy_star_purple_sp</sprite>
+    <sprite>sprites\galaxy_star_blue_sp</sprite>
+    <sprite>sprites\galaxy_star_sp</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background1</background>
@@ -28,7 +34,11 @@
     <script>scripts\Block_Division.gml</script>
     <script>scripts\shoot.gml</script>
     <script>scripts\enter_the_battle.gml</script>
+    <script>scripts\GenerateGalaxy.gml</script>
   </scripts>
+  <fonts name="fonts">
+    <font>fonts\font</font>
+  </fonts>
   <objects name="objects">
     <object>objects\Block_obj</object>
     <object>objects\check</object>
@@ -39,19 +49,32 @@
     <object>objects\FriendShip</object>
     <object>objects\Parallax</object>
     <object>objects\Planet_g</object>
-    <object>objects\Ship_landed_obj</object>
     <object>objects\EnemyFleet</object>
     <object>objects\EnemyShip</object>
     <object>objects\Battle_initialize</object>
     <object>objects\Fleet_setup_controller</object>
+    <object>objects\Galaxy_initialize</object>
     <object>objects\Star_y</object>
     <objects name="Ships">
       <object>objects\Ship_small</object>
       <object>objects\Ship_medium</object>
       <object>objects\Ship_big</object>
     </objects>
+    <objects name="Buttons">
+      <object>objects\bt_exit</object>
+      <object>objects\bt_back</object>
+      <object>objects\bt_settings</object>
+      <object>objects\bt_singleplayer</object>
+      <object>objects\bt_newgame</object>
+    </objects>
+    <object>objects\galaxy_star</object>
   </objects>
   <rooms name="rooms">
+    <rooms name="Menus">
+      <room>rooms\MainMenu</room>
+      <room>rooms\Settings</room>
+      <room>rooms\Singleplayer</room>
+    </rooms>
     <room>rooms\Space_system_room</room>
     <room>rooms\Galaxy_map_room</room>
     <room>rooms\Space_battle_room</room>
