@@ -30,7 +30,9 @@ for(i = 0; i &lt; global.Galaxy_star_count; i++)
 {
     star_x = ini_read_real(string(i), 'x', 0) + room_width / 2;
     star_y = ini_read_real(string(i), 'y', 0) + room_height / 2;
-    instance_create(star_x, star_y, galaxy_star);
+    star_sp = ini_read_string(string(i), 'sprite', 'galaxy_star_red_sp');
+    with instance_create(star_x, star_y, galaxy_star)
+       self.sp = other.star_sp;
 }
 
 </string>

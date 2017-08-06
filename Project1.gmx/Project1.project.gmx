@@ -19,6 +19,10 @@
     <sprite>sprites\sprite9</sprite>
     <sprite>sprites\Star_y_sp</sprite>
     <sprite>sprites\Button</sprite>
+    <sprite>sprites\galaxy_star_yellow_sp</sprite>
+    <sprite>sprites\galaxy_star_red_sp</sprite>
+    <sprite>sprites\galaxy_star_purple_sp</sprite>
+    <sprite>sprites\galaxy_star_blue_sp</sprite>
     <sprite>sprites\galaxy_star_sp</sprite>
   </sprites>
   <backgrounds name="background">
@@ -45,7 +49,6 @@
     <object>objects\FriendShip</object>
     <object>objects\Parallax</object>
     <object>objects\Planet_g</object>
-    <object>objects\Ship_landed_obj</object>
     <object>objects\EnemyFleet</object>
     <object>objects\EnemyShip</object>
     <object>objects\Battle_initialize</object>
