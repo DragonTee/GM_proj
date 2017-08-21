@@ -50,7 +50,6 @@
     <object>objects\Parallax</object>
     <object>objects\Planet_g</object>
     <object>objects\EnemyFleet</object>
-    <object>objects\EnemyShip</object>
     <object>objects\Battle_initialize</object>
     <object>objects\Fleet_setup_controller</object>
     <object>objects\Galaxy_initialize</object>
@@ -59,6 +58,9 @@
       <object>objects\Ship_small</object>
       <object>objects\Ship_medium</object>
       <object>objects\Ship_big</object>
+      <object>objects\Ship_small_e</object>
+      <object>objects\Ship_medium_e</object>
+      <object>objects\Ship_big_e</object>
     </objects>
     <objects name="Buttons">
       <object>objects\bt_exit</object>
@@ -70,12 +72,12 @@
     <object>objects\galaxy_star</object>
   </objects>
   <rooms name="rooms">
+    <room>rooms\Space_system_room</room>
     <rooms name="Menus">
       <room>rooms\MainMenu</room>
       <room>rooms\Settings</room>
       <room>rooms\Singleplayer</room>
     </rooms>
-    <room>rooms\Space_system_room</room>
     <room>rooms\Galaxy_map_room</room>
     <room>rooms\Space_battle_room</room>
     <room>rooms\Planet_room</room>

@@ -18,8 +18,8 @@ for(global.index = 1; global.index <= global.ship_count; global.index++)
     }
 }
 ini_close();
-with instance_create(room_width / 2 + cos(degtorad(global.battle_angle)) * global.battle_offset, room_height / 2 - sin(degtorad(global.battle_angle)) * global.battle_offset, EnemyShip)
-{
-    image_angle = global.battle_fleet2_angle;
-}
+//with instance_create(room_width / 2 + cos(degtorad(global.battle_angle)) * global.battle_offset, room_height / 2 - sin(degtorad(global.battle_angle)) * global.battle_offset, EnemyShip)
+//{
+//    image_angle = global.battle_fleet2_angle;
+//}
 }
