@@ -67,7 +67,7 @@
     </objects>
     <object>objects\galaxy_star</object>
     <objects name="Controllers and initializers">
-      <object>objects\Global_variables_initialization</object>
+      <object>objects\Game_Initialization</object>
       <object>objects\Galaxy_initialize</object>
       <object>objects\Battle_initialize</object>
       <object>objects\Fleet_setup_controller</object>

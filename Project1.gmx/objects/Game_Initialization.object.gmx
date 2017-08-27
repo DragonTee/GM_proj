@@ -25,17 +25,40 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ini_open(global.Galaxy_name + '.ini');
-for(i = 0; i &lt; global.Galaxy_star_count; i++)
-{
-    star_x = ini_read_real(string(i), 'x', 0) + room_width / 2;
-    star_y = ini_read_real(string(i), 'y', 0) + room_height / 2;
-    star_sp = ini_read_string(string(i), 'sprite', 'galaxy_star_red_sp');
-    with instance_create(star_x, star_y, galaxy_star)
-       self.sp = other.star_sp;
-}
+            <string>//Variables
+global.battle_distance = 25;
+global.battle_offset = 100;
+global.battle_leaving_offset = 100;
+global.battle_leaving = 0;
+global.ship_big_approach_distance = 500;
+
+//Ships:
+ini_open('Ships.dat');
+
+/* Big Ship */
+ini_write_real('Big Ship', 'max_hp', 1000);
+ini_write_real('Big Ship', 'acceleration', 0.5);
+ini_write_real('Big Ship', 'rotation_speed', 1);
+ini_write_real('Big Ship', 'turret_ammount', 2)
+ini_write_string('Big Ship', 'turret_name[0]', 'Turret');
+ini_write_real('Big Ship', 'turret_x[0]', 0);
+ini_write_real('Big Ship', 'turret_y[0]', 0);
+ini_write_string('Big Ship', 'turret_name[1]', 'Turret');
+ini_write_real('Big Ship', 'turret_x[1]', 0);
+ini_write_real('Big Ship', 'turret_y[1]', 0);
+
 ini_close();
 
+//Turrets:
+ini_open('Turrets.ini');
+
+/* Turret */
+ini_write_real('Turret', 'damage', 10);
+ini_write_real('Turret', 'rof', 1);
+ini_write_real('Turret', 'velocity', 10);
+ini_write_real('Turret', 'rotation_speed', 5);
+
+ini_close();
 </string>
           </argument>
         </arguments>
