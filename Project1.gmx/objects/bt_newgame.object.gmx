@@ -54,7 +54,7 @@ y = room_height / 2;
     if position_meeting(mouse_x, mouse_y, bt_newgame)
         {
             GenerateGalaxy('Galaxy1', 100);
-            room_goto(Galaxy_map_room);
+            room_goto(Space_battle_room);
         }
     }
 </string>

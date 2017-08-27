@@ -25,7 +25,35 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>enter_the_battle();
+            <string>//Variables
+global.battle_distance = 25;
+global.battle_offset = 100;
+global.battle_leaving_offset = 100;
+global.battle_leaving = 0;
+global.ship_big_approach_distance = 500;
+
+//Ships:
+
+/* Big Ship */
+ini_open('Ships.dat');
+ini_write_real('Big Ship', 'max_hp', 1000);
+ini_write_real('Big Ship', 'acceleration', 0.5);
+ini_write_real('Big Ship', 'rotation_speed', 1);
+ini_write_real('Big Ship', 'turret_ammount', 2)
+ini_write_string('Big Ship', 'turret_1_name', 'Turret');
+ini_write_real('Big Ship', 'turret_1_x', 0);
+ini_write_real('Big Ship', 'turret_1_y', 0);
+ini_write_string('Big Ship', 'turret_2_name', 'Turret');
+ini_write_real('Big Ship', 'turret_2_x', 0);
+ini_write_real('Big Ship', 'turret_2_y', 0);
+
+//Turrets:
+ini_open('Turrets.dat');
+ini_write_real('Turret', 'damage', 10);
+ini_write_real('Turret', 'rof', 1);
+ini_write_real('Turret', 'velocity', 10);
+ini_write_real('Turret', 'rotation_speed', 5);
+ini_close();
 </string>
           </argument>
         </arguments>

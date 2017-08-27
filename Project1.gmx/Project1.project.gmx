@@ -47,12 +47,8 @@
     <object>objects\Character</object>
     <object>objects\PlayerShip</object>
     <object>objects\FriendShip</object>
-    <object>objects\Parallax</object>
     <object>objects\Planet_g</object>
     <object>objects\EnemyFleet</object>
-    <object>objects\Battle_initialize</object>
-    <object>objects\Fleet_setup_controller</object>
-    <object>objects\Galaxy_initialize</object>
     <object>objects\Star_y</object>
     <objects name="Ships">
       <object>objects\Ship_small</object>
@@ -70,14 +66,21 @@
       <object>objects\bt_newgame</object>
     </objects>
     <object>objects\galaxy_star</object>
+    <objects name="Controllers and initializers">
+      <object>objects\Global_variables_initialization</object>
+      <object>objects\Galaxy_initialize</object>
+      <object>objects\Battle_initialize</object>
+      <object>objects\Fleet_setup_controller</object>
+      <object>objects\Parallax</object>
+    </objects>
   </objects>
   <rooms name="rooms">
-    <room>rooms\Space_system_room</room>
     <rooms name="Menus">
       <room>rooms\MainMenu</room>
       <room>rooms\Settings</room>
       <room>rooms\Singleplayer</room>
     </rooms>
+    <room>rooms\Space_system_room</room>
     <room>rooms\Galaxy_map_room</room>
     <room>rooms\Space_battle_room</room>
     <room>rooms\Planet_room</room>

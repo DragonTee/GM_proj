@@ -37,10 +37,6 @@ followers = 0;
 zoom = view_wview[0];
 zoom_max = 8;
 zoom_min = 0.5;
-global.battle_distance = 25;
-global.battle_offset = 100;
-global.battle_leaving_offset = 100;
-global.battle_leaving = 0;
 if(room == Space_system_room)
 {
     global.system_player_ship = self;
