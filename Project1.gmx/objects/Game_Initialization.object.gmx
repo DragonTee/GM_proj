@@ -36,6 +36,7 @@ global.ship_big_approach_distance = 500;
 ini_open('Ships.ini');
 
 /* Big Ship */
+ini_write_string('Big Ship', 'sprite', 'ShipFriend_sp');
 ini_write_real('Big Ship', 'max_hp', 1000);
 ini_write_real('Big Ship', 'acceleration', 0.5);
 ini_write_real('Big Ship', 'rotation_speed', 1);
