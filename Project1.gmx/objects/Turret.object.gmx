@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>-100</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>self</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -58,8 +58,9 @@ ini_close();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>x = parent.x - offset_y * cos(degtorad(parent.image_angle)) + offset_x * sin(degtorad(parent.image_angle));
-y = parent.y + offset_y * sin(degtorad(parent.image_angle)) + offset_x * cos(degtorad(parent.image_angle));
+            <string>x = parent.x + offset_x * cos(degtorad(parent.image_angle)) + offset_y * sin(degtorad(parent.image_angle));
+y = parent.y - offset_x * sin(degtorad(parent.image_angle)) + offset_y * cos(degtorad(parent.image_angle));
+image_angle = parent.image_angle;
 </string>
           </argument>
         </arguments>
@@ -82,7 +83,7 @@ y = parent.y + offset_y * sin(degtorad(parent.image_angle)) + offset_x * cos(deg
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite(sprite, 0, x, y);
+            <string>draw_sprite_ext(sprite, 0, x, y, 1, 1, image_angle, c_white, 1);
 </string>
           </argument>
         </arguments>
