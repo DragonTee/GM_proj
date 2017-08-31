@@ -54,6 +54,7 @@
     <instance objName="bt_exit" x="64" y="32" name="inst_30F30BA8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="bt_settings" x="64" y="64" name="inst_CDE0105A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="bt_singleplayer" x="64" y="96" name="inst_27B80B3C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="Game_Initialization" x="160" y="0" name="inst_4E70948E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

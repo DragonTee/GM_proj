@@ -10,20 +10,28 @@
     <sprite>sprites\Explosion_mask</sprite>
     <sprite>sprites\player</sprite>
     <sprite>sprites\bullet_sp</sprite>
-    <sprite>sprites\sprite4</sprite>
-    <sprite>sprites\Ship_sp</sprite>
-    <sprite>sprites\ShipfFriend_sp</sprite>
-    <sprite>sprites\ShipEnemy_sp</sprite>
-    <sprite>sprites\Planet_g_sp</sprite>
-    <sprite>sprites\Ship_landed</sprite>
     <sprite>sprites\sprite9</sprite>
-    <sprite>sprites\Star_y_sp</sprite>
     <sprite>sprites\Button</sprite>
-    <sprite>sprites\galaxy_star_yellow_sp</sprite>
-    <sprite>sprites\galaxy_star_red_sp</sprite>
-    <sprite>sprites\galaxy_star_purple_sp</sprite>
-    <sprite>sprites\galaxy_star_blue_sp</sprite>
-    <sprite>sprites\galaxy_star_sp</sprite>
+    <sprite>sprites\sprite4</sprite>
+    <sprites name="Ships">
+      <sprite>sprites\ShipFriend_sp</sprite>
+      <sprite>sprites\ShipEnemy_sp</sprite>
+      <sprite>sprites\Ship_sp</sprite>
+    </sprites>
+    <sprites name="Stars">
+      <sprite>sprites\galaxy_star_blue_sp</sprite>
+      <sprite>sprites\galaxy_star_purple_sp</sprite>
+      <sprite>sprites\galaxy_star_yellow_sp</sprite>
+      <sprite>sprites\galaxy_star_red_sp</sprite>
+      <sprite>sprites\galaxy_star_sp</sprite>
+    </sprites>
+    <sprites name="Star System">
+      <sprite>sprites\Planet_g_sp</sprite>
+      <sprite>sprites\Star_y_sp</sprite>
+    </sprites>
+    <sprites name="Turrets">
+      <sprite>sprites\Turret_sp</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\background1</background>
@@ -45,20 +53,20 @@
     <object>objects\pl</object>
     <object>objects\bullet</object>
     <object>objects\Character</object>
-    <object>objects\PlayerShip</object>
-    <object>objects\FriendShip</object>
-    <object>objects\Parallax</object>
     <object>objects\Planet_g</object>
     <object>objects\EnemyFleet</object>
-    <object>objects\EnemyShip</object>
-    <object>objects\Battle_initialize</object>
-    <object>objects\Fleet_setup_controller</object>
-    <object>objects\Galaxy_initialize</object>
     <object>objects\Star_y</object>
+    <object>objects\galaxy_star</object>
     <objects name="Ships">
       <object>objects\Ship_small</object>
       <object>objects\Ship_medium</object>
       <object>objects\Ship_big</object>
+      <object>objects\Ship_small_e</object>
+      <object>objects\Ship_medium_e</object>
+      <object>objects\Ship_big_e</object>
+      <object>objects\Turret</object>
+      <object>objects\PlayerShip</object>
+      <object>objects\FriendShip</object>
     </objects>
     <objects name="Buttons">
       <object>objects\bt_exit</object>
@@ -67,7 +75,13 @@
       <object>objects\bt_singleplayer</object>
       <object>objects\bt_newgame</object>
     </objects>
-    <object>objects\galaxy_star</object>
+    <objects name="Controllers and initializers">
+      <object>objects\Game_Initialization</object>
+      <object>objects\Galaxy_initialize</object>
+      <object>objects\Battle_initialize</object>
+      <object>objects\Fleet_setup_controller</object>
+      <object>objects\Parallax</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <rooms name="Menus">

@@ -36,11 +36,15 @@ for(global.index = 1; global.index &lt;= global.ship_count; global.index++)
     global.ship_obj = asset_get_index(ini_read_string(ind, 'ship', 0));
     global.ship_x = ini_read_real(ind, 'x', 0);
     global.ship_y = ini_read_real(ind, 'y', 0);
+    global.ship_name = ini_read_string(ind, 'name', '0');
     ship[ind] = instance_create(room_width / 2 + global.ship_x, room_height / 2 + global.ship_y, global.ship_obj);
+    with ship[ind]
+        name = global.ship_name;
 }
 ini_close();
 //initializing varibles
 is_dragging = 0;
+
 </string>
           </argument>
         </arguments>
@@ -71,6 +75,7 @@ is_dragging = 0;
         ind = string(global.index);
         ini_write_real(ind, 'x', ship[global.index].x - ship[0].x);
         ini_write_real(ind, 'y', ship[global.index].y - ship[0].y);
+        ini_write_string(ind, 'name', ship[global.index].name);
     }
     ini_close();
     room_goto(global.system_room);
@@ -113,12 +118,12 @@ if(is_dragging == 1)
   <PhysicsObject>0</PhysicsObject>
   <PhysicsObjectSensor>0</PhysicsObjectSensor>
   <PhysicsObjectShape>0</PhysicsObjectShape>
-  <PhysicsObjectDensity>0,5</PhysicsObjectDensity>
-  <PhysicsObjectRestitution>0,100000001490116</PhysicsObjectRestitution>
+  <PhysicsObjectDensity>0.5</PhysicsObjectDensity>
+  <PhysicsObjectRestitution>0.100000001490116</PhysicsObjectRestitution>
   <PhysicsObjectGroup>0</PhysicsObjectGroup>
-  <PhysicsObjectLinearDamping>0,100000001490116</PhysicsObjectLinearDamping>
-  <PhysicsObjectAngularDamping>0,100000001490116</PhysicsObjectAngularDamping>
-  <PhysicsObjectFriction>0,200000002980232</PhysicsObjectFriction>
+  <PhysicsObjectLinearDamping>0.100000001490116</PhysicsObjectLinearDamping>
+  <PhysicsObjectAngularDamping>0.100000001490116</PhysicsObjectAngularDamping>
+  <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
   <PhysicsShapePoints/>
