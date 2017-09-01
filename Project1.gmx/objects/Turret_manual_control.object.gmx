@@ -64,54 +64,30 @@ ini_close();
             <kind>1</kind>
             <string>x = parent.x + offset_x * cos(degtorad(parent.image_angle)) + offset_y * sin(degtorad(parent.image_angle));
 y = parent.y - offset_x * sin(degtorad(parent.image_angle)) + offset_y * cos(degtorad(parent.image_angle));
-if(target != noone &amp;&amp; point_distance(x, y, target.x, target.y) &gt; range)
-    target = noone;
-if(target == noone)
-{
-    if(instance_exists(Ship_big_e) &amp;&amp; point_distance(x, y, instance_nearest(x, y, Ship_big_e).x, instance_nearest(x, y, Ship_big_e).y) &lt;= range)
-    {  
-        target = instance_nearest(x, y, Ship_big_e);
-    }
-    else
-    if(instance_exists(Ship_medium_e) &amp;&amp; point_distance(x, y, instance_nearest(x, y, Ship_medium_e).x, instance_nearest(x, y, Ship_medium_e).y) &lt;= range)
-    {  
-        target = instance_nearest(x, y, Ship_medium_e);
-    }
-    else
-    if(instance_exists(Ship_small_e) &amp;&amp; point_distance(x, y, instance_nearest(x, y, Ship_small_e).x, instance_nearest(x, y, Ship_small_e).y) &lt;= range)
-    {  
-        target = instance_nearest(x, y, Ship_small_e);
-    }
-}
+
 //aiming
-if(target != noone)
+if(abs(image_angle % 360 - point_direction(x, y, mouse_x, mouse_y) % 360) &lt; rotation_speed)
 {
-    if(point_distance(x, y, target.x, target.y) &lt;= range)
+    rotation = abs(image_angle % 360 - point_direction(x, y, mouse_x, mouse_y) % 360) / rotation_speed;
+}
+else
+{
+    rotation = rotation_speed;
+}
+if((image_angle - point_direction(x, y, mouse_x, mouse_y) + 360) % 360 &lt; 180)
+{
+    rotation_offset = rotation_offset % 360 - rotation;
+    if (rotation_offset &lt; 0)
     {
-        if(abs(image_angle % 360 - point_direction(x, y, target.x, target.y) % 360) &lt; rotation_speed)
-        {
-            rotation = abs(image_angle % 360 - point_direction(x, y, target.x, target.y) % 360) / rotation_speed;
-        }
-        else
-        {
-            rotation = rotation_speed;
-        }
-        if((image_angle - point_direction(x, y, target.x, target.y) + 360) % 360 &lt; 180)
-        {
-            rotation_offset = rotation_offset % 360 - rotation;
-            if (rotation_offset &lt; 0)
-            {
-                    rotation_offset += 360;
-            }
-        }
-        else
-        {
-                rotation_offset = rotation_offset % 360 + rotation;
-        }      
+        rotation_offset += 360;
     }
 }
+    else
+    {
+                rotation_offset = rotation_offset % 360 + rotation;
+    }      
 //shooting
-if(target != noone &amp;&amp; point_distance(x, y, target.x, target.y) &lt;= range &amp;&amp; abs(image_angle % 360 - point_direction(x, y, target.x, target.y) % 360) &lt; 4)
+if(mouse_check_button(mb_left))
 {
     if (can_fire == 0)
     {

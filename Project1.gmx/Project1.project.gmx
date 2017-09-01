@@ -65,6 +65,8 @@
       <object>objects\Ship_medium_e</object>
       <object>objects\Ship_big_e</object>
       <object>objects\Turret</object>
+      <object>objects\Turret_manual_control</object>
+      <object>objects\Turret_projectile</object>
       <object>objects\PlayerShip</object>
       <object>objects\FriendShip</object>
     </objects>
@@ -82,7 +84,6 @@
       <object>objects\Fleet_setup_controller</object>
       <object>objects\Parallax</object>
     </objects>
-    <object>objects\Turret_projectile</object>
   </objects>
   <rooms name="rooms">
     <rooms name="Menus">
