@@ -55,10 +55,11 @@ ini_open('Turrets.ini');
 
 /* Turret */
 ini_write_real('Turret', 'damage', 10);
-ini_write_real('Turret', 'rof', 1);
+ini_write_real('Turret', 'rof', 5);
 ini_write_real('Turret', 'velocity', 10);
 ini_write_real('Turret', 'rotation_speed', 5);
-ini_write_string('Turret', 'sprite', 'Turret_sp')
+ini_write_real('Turret', 'range', 250);
+ini_write_string('Turret', 'sprite', 'Turret_sp');
 
 ini_close();
 </string>

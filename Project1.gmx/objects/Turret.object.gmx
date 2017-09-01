@@ -25,8 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>offset_x = global.turret_x;
+            <string>target = noone;
+can_fire = 0;
+offset_x = global.turret_x;
 offset_y = global.turret_y;
+rotation_offset = 0;
 parent = global.turret_parent;
 name = global.turret_name;
 ini_open('Turrets.ini');
@@ -35,6 +38,7 @@ damage = ini_read_real(name, 'damage', 0);
 rof = ini_read_real(name, 'rof', 1);
 velocity = ini_read_real(name, 'velocity', 1);
 rotation_speed = ini_read_real(name, 'rotation_speed', 1);
+range = ini_read_real(name, 'range', 1);
 ini_close();
 </string>
           </argument>
@@ -60,7 +64,71 @@ ini_close();
             <kind>1</kind>
             <string>x = parent.x + offset_x * cos(degtorad(parent.image_angle)) + offset_y * sin(degtorad(parent.image_angle));
 y = parent.y - offset_x * sin(degtorad(parent.image_angle)) + offset_y * cos(degtorad(parent.image_angle));
-image_angle = parent.image_angle;
+if(target != noone &amp;&amp; point_distance(x, y, target.x, target.y) &gt; range)
+    target = noone;
+if(target == noone)
+{
+    if(instance_exists(Ship_big_e) &amp;&amp; point_distance(x, y, instance_nearest(x, y, Ship_big_e).x, instance_nearest(x, y, Ship_big_e).y) &lt;= range)
+    {  
+        target = instance_nearest(x, y, Ship_big_e);
+    }
+    else
+    if(instance_exists(Ship_medium_e) &amp;&amp; point_distance(x, y, instance_nearest(x, y, Ship_medium_e).x, instance_nearest(x, y, Ship_medium_e).y) &lt;= range)
+    {  
+        target = instance_nearest(x, y, Ship_medium_e);
+    }
+    else
+    if(instance_exists(Ship_small_e) &amp;&amp; point_distance(x, y, instance_nearest(x, y, Ship_small_e).x, instance_nearest(x, y, Ship_small_e).y) &lt;= range)
+    {  
+        target = instance_nearest(x, y, Ship_small_e);
+    }
+}
+//aiming
+if(target != noone)
+{
+    if(point_distance(x, y, target.x, target.y) &lt;= range)
+    {
+        if(abs(image_angle % 360 - point_direction(x, y, target.x, target.y) % 360) &lt; rotation_speed)
+        {
+            rotation = abs(image_angle % 360 - point_direction(x, y, target.x, target.y) % 360) / rotation_speed;
+        }
+        else
+        {
+            rotation = rotation_speed;
+        }
+        if((image_angle - point_direction(x, y, target.x, target.y) + 360) % 360 &lt; 180)
+        {
+            rotation_offset = rotation_offset % 360 - rotation;
+            if (rotation_offset &lt; 0)
+            {
+                    rotation_offset += 360;
+            }
+        }
+        else
+        {
+                rotation_offset = rotation_offset % 360 + rotation;
+        }      
+    }
+}
+//shooting
+if(target != noone &amp;&amp; point_distance(x, y, target.x, target.y) &lt;= range &amp;&amp; abs(image_angle % 360 - point_direction(x, y, target.x, target.y) % 360) &lt; 4)
+{
+    if (can_fire == 0)
+    {
+        with instance_create(x, y, Turret_projectile)
+        {
+            d = other.image_angle;
+            spd = other.velocity;
+            damage = other.damage;
+        }
+        can_fire = rof;
+    }
+    else
+        can_fire--;
+}
+
+image_angle = parent.image_angle + rotation_offset;
+target = noone;
 </string>
           </argument>
         </arguments>

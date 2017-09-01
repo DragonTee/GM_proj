@@ -82,6 +82,7 @@
       <object>objects\Fleet_setup_controller</object>
       <object>objects\Parallax</object>
     </objects>
+    <object>objects\Turret_projectile</object>
   </objects>
   <rooms name="rooms">
     <rooms name="Menus">

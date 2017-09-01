@@ -32,7 +32,7 @@ hsp = 0;
 vsp = 0;
 fric = 0.9;
 name = global.ship_name;
-ini_open('Ships.dat');
+ini_open('Ships.ini');
 acc = ini_read_real(name, 'acceleration', 0.5);
 max_hp = ini_read_real(name, 'max_hp', 1);
 rotation_speed = ini_read_real(name, 'rotation_speed', 1);
@@ -126,11 +126,17 @@ if (abs(vsp) &gt; EPS)
     vsp *= fric;
 }
 
-{
-    x += hsp;
-    y += vsp;
-}
-
+x += hsp;
+y += vsp;
+//aiming
+if (target != noone)
+    for(i = 0; i &lt; turret_ammount; i++)
+    {
+        with turret[i]
+        {
+            target = other.target;
+        }
+    }
 </string>
           </argument>
         </arguments>
