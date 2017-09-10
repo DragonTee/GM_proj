@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>Ships</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -26,6 +26,116 @@
           <argument>
             <kind>1</kind>
             <string>image_xscale = 1.5
+EPS = 0.001;
+hsp = 0;
+vsp = 0;
+fric = 0.9;
+name = global.ship_name;
+/*ini_open('Ships.ini');
+acc = ini_read_real(name, 'acceleration', 0.5);
+max_hp = ini_read_real(name, 'max_hp', 1);
+rotation_speed = ini_read_real(name, 'rotation_speed', 1);
+turret_ammount = ini_read_real(name, 'turret_ammount', 0);
+for (i = 0; i &lt; turret_ammount; i++)
+{
+    turret_name[i] = ini_read_string(name, 'turret_name[' + string(i) + ']', 'Turret');
+    turret_x[i] = ini_read_real(name, 'turret_x[' + string(i) + ']', 0);
+    turret_y[i] = ini_read_real(name, 'turret_y[' + string(i) + ']', 0);
+}
+ini_close();
+for (i = 0; i &lt; turret_ammount; i++)
+{
+    global.turret_parent = self.id;
+    global.turret_name = turret_name[i];
+    global.turret_x = turret_x[i];
+    global.turret_y = turret_y[i];
+    turret[i] = instance_create(x, y, Turret);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//finding target
+target = noone
+if(instance_exists(Ship_big_e))
+{  
+    target = instance_nearest(x, y, Ship_big_e);
+}
+else
+if(instance_exists(Ship_medium_e))
+{  
+    target = instance_nearest(x, y, Ship_medium_e);
+}
+else
+if(instance_exists(Ship_small_e))
+{  
+    target = instance_nearest(x, y, Ship_small_e);
+}
+//movement
+if (target != noone)
+{
+    if(abs(image_angle % 360 - point_direction(x, y, target.x, target.y) % 360) &gt; 2)
+    {
+        if((image_angle - point_direction(x, y, target.x, target.y) + 360) % 360 &lt; 180)
+        {
+            image_angle = image_angle % 360 - rotation_speed;
+            if (image_angle &lt; 0)
+            {
+                image_angle += 360;
+            }
+        }
+        else
+        {
+            image_angle = image_angle % 360 + rotation_speed;
+        }
+    }
+    else
+    if(point_distance(x, y, target.x, target.y) &gt; global.ship_big_approach_distance)
+    {
+        d = degtorad(image_angle);
+        hsp += cos(d) * acc;
+        vsp -= sin(d) * acc;
+    }
+}
+
+if (abs(hsp) &gt; EPS)
+{
+    hsp *= fric;
+}
+if (abs(vsp) &gt; EPS)
+{
+    vsp *= fric;
+}
+
+x += hsp;
+y += vsp;
+//aiming
+if (target != noone)
+    for(i = 0; i &lt; turret_ammount; i++)
+    {
+        with turret[i]
+        {
+            target = other.target;
+        }
+    }
 </string>
           </argument>
         </arguments>

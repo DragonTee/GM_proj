@@ -30,20 +30,45 @@ ship[0] = instance_create(room_width / 2, room_height / 2, PlayerShip);
 //loading fleet
 ini_open('fleet.ini');
 global.ship_count = ini_read_real('Fleet', 'ship_count', 0);
+ini_close();
 for(global.index = 1; global.index &lt;= global.ship_count; global.index++)
 {
+ini_open('fleet.ini');
     ind = string(global.index);
     global.ship_obj = asset_get_index(ini_read_string(ind, 'ship', 0));
     global.ship_x = ini_read_real(ind, 'x', 0);
     global.ship_y = ini_read_real(ind, 'y', 0);
     global.ship_name = ini_read_string(ind, 'name', '0');
+    ini_close();
     ship[ind] = instance_create(room_width / 2 + global.ship_x, room_height / 2 + global.ship_y, global.ship_obj);
     with ship[ind]
+    {
         name = global.ship_name;
+        ini_open('Ships.ini');
+        acc = ini_read_real(name, 'acceleration', 0.5);
+        max_hp = ini_read_real(name, 'max_hp', 1);
+        rotation_speed = ini_read_real(name, 'rotation_speed', 1);
+        turret_ammount = ini_read_real(name, 'turret_ammount', 0);
+        for (i = 0; i &lt; turret_ammount; i++)
+        {
+            turret_name[i] = ini_read_string(name, 'turret_name[' + string(i) + ']', 'Turret');
+            turret_x[i] = ini_read_real(name, 'turret_x[' + string(i) + ']', 0);
+            turret_y[i] = ini_read_real(name, 'turret_y[' + string(i) + ']', 0);
+        }
+        ini_close();
+        for (i = 0; i &lt; turret_ammount; i++)
+        {
+        global.turret_parent = self.id;
+        global.turret_name = turret_name[i];
+        global.turret_x = turret_x[i];
+        global.turret_y = turret_y[i];
+        turret[i] = instance_create(x, y, Turret);
+        }
+    }
+    show_debug_message(ind);
 }
-ini_close();
 //initializing varibles
-is_dragging = 0;
+dragged_onj = noone;
 
 </string>
           </argument>
@@ -67,26 +92,26 @@ is_dragging = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//loading player ship
-ship[0] = instance_create(room_width / 2, room_height / 2, PlayerShip);
-//loading fleet
-ini_open('fleet.ini');
-global.ship_count = ini_read_real('Fleet', 'ship_count', 0);
-for(global.index = 1; global.index &lt;= global.ship_count; global.index++)
+            <string>if(mouse_check_button(mb_left))
 {
-    ind = string(global.index);
-    global.ship_obj = asset_get_index(ini_read_string(ind, 'ship', 0));
-    global.ship_x = ini_read_real(ind, 'x', 0);
-    global.ship_y = ini_read_real(ind, 'y', 0);
-    global.ship_name = ini_read_string(ind, 'name', '0');
-    ship[ind] = instance_create(room_width / 2 + global.ship_x, room_height / 2 + global.ship_y, global.ship_obj);
-    with ship[ind]
-        name = global.ship_name;
+    if(position_meeting(mouse_x, mouse_y, Ships))
+    {
+        is_dragging = 1;
+        dragged_obj = instance_position(mouse_x, mouse_y, Ships)
+    }
 }
-ini_close();
-//initializing varibles
-is_dragging = 0;
-
+else
+{
+    dragged_obj = noone;
+}
+if (dragged_obj != noone)
+{
+    if(!place_meeting(mouse_x, mouse_y, Ships))
+    {
+        x = mouse_x;
+        y = mouse_y;
+    }
+}
 </string>
           </argument>
         </arguments>

@@ -48,6 +48,19 @@ ini_write_string('Big Ship', 'turret_name[1]', 'Turret');
 ini_write_real('Big Ship', 'turret_x[1]', 2);
 ini_write_real('Big Ship', 'turret_y[1]', -15);
 
+/* Medium Ship */
+ini_write_string('Medium Ship', 'sprite', 'ShipFriend_sp');
+ini_write_real('Medium Ship', 'max_hp', 200);
+ini_write_real('Medium Ship', 'acceleration', 0.5);
+ini_write_real('Medium Ship', 'rotation_speed', 2);
+ini_write_real('Medium Ship', 'turret_ammount', 2)
+ini_write_string('Medium Ship', 'turret_name[0]', 'Turret');
+ini_write_real('Medium Ship', 'turret_x[0]', -2);
+ini_write_real('Medium Ship', 'turret_y[0]', 5);
+ini_write_string('Medium Ship', 'turret_name[1]', 'Turret');
+ini_write_real('Medium Ship', 'turret_x[1]', 2);
+ini_write_real('Medium Ship', 'turret_y[1]', -5);
+
 ini_close();
 
 //Turrets:
@@ -60,6 +73,14 @@ ini_write_real('Turret', 'velocity', 10);
 ini_write_real('Turret', 'rotation_speed', 5);
 ini_write_real('Turret', 'range', 250);
 ini_write_string('Turret', 'sprite', 'Turret_sp');
+
+/* Fighter Turret */
+ini_write_real('Fighter Turret', 'damage', 10);
+ini_write_real('Fighter Turret', 'rof', 5);
+ini_write_real('Fighter Turret', 'velocity', 10);
+ini_write_real('Fighter Turret', 'rotation_speed', 20);
+ini_write_real('Fighter Turret', 'range', 250);
+ini_write_string('Fighter Turret', 'sprite', 'Turret_sp');
 
 ini_close();
 </string>

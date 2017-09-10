@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>Ships</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -32,26 +32,6 @@ hsp = 0;
 vsp = 0;
 fric = 0.9;
 name = global.ship_name;
-ini_open('Ships.ini');
-acc = ini_read_real(name, 'acceleration', 0.5);
-max_hp = ini_read_real(name, 'max_hp', 1);
-rotation_speed = ini_read_real(name, 'rotation_speed', 1);
-turret_ammount = ini_read_real(name, 'turret_ammount', 0);
-for (i = 0; i &lt; turret_ammount; i++)
-{
-    turret_name[i] = ini_read_string(name, 'turret_name[' + string(i) + ']', 'Turret');
-    turret_x[i] = ini_read_real(name, 'turret_x[' + string(i) + ']', 0);
-    turret_y[i] = ini_read_real(name, 'turret_y[' + string(i) + ']', 0);
-}
-ini_close();
-for (i = 0; i &lt; turret_ammount; i++)
-{
-    global.turret_parent = self.id;
-    global.turret_name = turret_name[i];
-    global.turret_x = turret_x[i];
-    global.turret_y = turret_y[i];
-    turret[i] = instance_create(x, y, Turret);
-}
 </string>
           </argument>
         </arguments>

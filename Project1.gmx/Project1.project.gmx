@@ -17,6 +17,7 @@
       <sprite>sprites\ShipFriend_sp</sprite>
       <sprite>sprites\ShipEnemy_sp</sprite>
       <sprite>sprites\Ship_sp</sprite>
+      <sprite>sprites\sprite18</sprite>
     </sprites>
     <sprites name="Stars">
       <sprite>sprites\galaxy_star_blue_sp</sprite>
@@ -69,6 +70,7 @@
       <object>objects\Turret_projectile</object>
       <object>objects\PlayerShip</object>
       <object>objects\FriendShip</object>
+      <object>objects\Ships</object>
     </objects>
     <objects name="Buttons">
       <object>objects\bt_exit</object>
